@@ -30,7 +30,7 @@ We'll come back to these shortly.
 Houses.js
 ```
 return (
-    <div classNam="page">
+    <div className="page">
         <div className="header">
             <h2>Game of Thrones Houses</h2>
         </div>
@@ -59,7 +59,7 @@ return (
     <div className="page">
         <div className="header">
             <h2>Specific Member Name</h2>
-        </header>
+        </div>
         <div className="desc">
             A description
         </div>
