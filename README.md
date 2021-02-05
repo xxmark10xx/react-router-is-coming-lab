@@ -8,7 +8,6 @@
 Using all you've learned about React Router, you should create an application that allows users
 -    to view data about their favorite Game of Thrones houses and characters
 -    to navigate between pages, rendering only the data pertinent to their current page
--    save their favorite characters, creating a link to GoTs wiki in the process
 
 ## Preparation
 Before we begin, it's important for us to look at the data we have been given to complete the task.
