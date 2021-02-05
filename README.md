@@ -1,70 +1,83 @@
-# Getting Started with Create React App
+# Router is coming
+## Getting started
+-    Fork and clone this repository
+-    Install dependencies with `npm i`
+-    Spin up your application with `npm start`
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Introduction
+Using all you've learned about React Router, you should create an application that allows users
+-    to view data about their favorite Game of Thrones houses and characters
+-    to navigate between pages, rendering only the data pertinent to their current page
+-    save their favorite characters, creating a link to GoTs wiki in the process
 
-## Available Scripts
+## Preparation
+Before we begin, it's important for us to look at the data we have been given to complete the task.
 
-In the project directory, you can run:
+`gameOfThrones.js` is a large array containing data pertaining to Westeros Houses and a select number of their family members.
 
-### `npm start`
+Each item, has a unique identifier in `id`, meaning we can access specific data relatively easily using the tools at our disposal.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Step One: Build out Components
+We need to create components for our application, starting with `Houses.js`, `House.js` and `Member.js`. These will be the components we will use to display our data.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- `Houses.js` should provide users with a list of all houses in gameOfThrones.js, as well as a link to each
+- `House.js` should provide users with a list of all house members, as well as a link to each
+- `Member.js` should provide users with individual house member data
 
-### `npm test`
+We don't have the data flowing yet, so include a temporary tag indicating what data will be in each component in the future, as well as a bold header indicating which component it is. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+We'll come back to these shortly.
 
-### `npm run build`
+Houses.js
+```
+return (
+    <div classNam="page">
+        <div className="header">
+            <h2>Game of Thrones Houses</h2>
+        </div>
+        <div className="house-list">
+            A list of houses
+        </div>
+    </div>
+)
+```
+House.js
+```
+return (
+    <div className='page'>
+        <div className='header'>
+            <h2>Members of a GoT House</h2>
+        </div>
+        <ul className='list'>
+            A list of members
+        </ul>
+    </div>
+)
+```
+Member.js
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Step Two: Implement Router
+At the top of your `App.js`, be sure to import `BrowserRouter` and `Route` from `react-router-dom`.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+You now need to set up your routes, specifically:
 
-### `npm run eject`
+`/houses` - all houses
+`/houses/:id` - all members from one houses
+`/houses/:id/members/:id` - one member
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Once you have completed these, make sure to test them out and check if you're hitting the right component.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Step Three: Render Content
+If you haven't already, import your data using `import gameOfThrones from gameOfThrones` and log the data inside your render method to ensure you can access it.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Once your data is available to you, begin rendering by displaying all houses as links in your `House.js` component.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+**Remember to import and use `Link` when routing in React.**
 
-## Learn More
+Once you have completed this, move onto `Family.js` and `Member.js`. Each of these requires params matching, so make sure you take this into account passing props into your components.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Bonuses
+- Using the `wikiSuffix` value of the data object, create a link using `https://awoiaf.westeros.org/index.php/:suffix`.
+-  Style it out! Some basic styling has been included, but you can definitely add a bit of your own flair
+- Add the ability for users to favorite characters and houses and render these favorites alongisde the primary list
