@@ -41,9 +41,9 @@ return (
         <div className="header">
             <h2>Game of Thrones Houses</h2>
         </div>
-        <div className="list">
+        <ul className="list">
             A list of houses
-        </div>
+        </ul>
     </div>
 )
 ```
@@ -84,7 +84,7 @@ You now need to set up your routes, specifically:
 
 `/houses` - all houses
 `/houses/:id` - all members from one houses
-`/houses/:id/members/:id` - one member
+`/houses/:houseId/members/:memberId` - one member
 
 Once you have completed these, make sure to test them out and check if you're hitting the right component.
 
@@ -92,11 +92,66 @@ Once you have completed these, make sure to test them out and check if you're hi
 
 If you haven't already, import your data using `import gameOfThrones from gameOfThrones` and log the data inside your render method to ensure you can access it.
 
-Once your data is available to you, begin rendering by displaying all houses as links in your `House.js` component.
+Once your data is available to you, begin rendering by displaying all houses as links in your `Houses.js` component.
 
 **Remember to import and use `Link` when routing in React.**
 
-Once you have completed this, move onto `Family.js` and `Member.js`. Each of these requires params matching, so make sure you take this into account passing props into your components.
+Once you have completed this, move onto `House.js` and `Member.js`. Each of these requires params matching, so make sure you take this into account passing props into your components.
+
+## Hints 
+
+* use the array `.find()` method to when rendering compound routes you can use the `props.match.params` to match data ids with route parameters. 
+
+<details>
+
+  <summary> Stuck on how to render your `/houses/:id`?</summary>
+
+  <p>
+
+  ```jsx
+    <Route 
+        exact path="/houses/:id" 
+        render={(props) => {
+            // compare the url params with the data id to find the data
+            const house = gameOfThrones.find(house => house.id.toString() === props.match.params.id)
+            // spread the data into the props
+            props = {...props, ...house}
+            // render component with new props
+            return <House {...props}/>
+        }} 
+    />
+  ```
+
+  </p>
+</details>
+
+* Since `/houses/:houseId/members/:memberId` has two route parameters, you will have access to them as `rops.match.params.houseId` and `props.match.params.memberId`
+
+<details>
+
+  <summary> Stuck on how to render your `/houses/:houseId/members/:memberId`?</summary>
+
+  <p>
+
+  ```jsx
+        <Route 
+          path="/houses/:houseId/member/:memberId" 
+          render={(props) => {
+            
+            // first find the right house from the url params
+            const member = houseData
+                .find(house => house.id.toString() === props.match.params.houseId)
+                    // then find the right person in that house
+                    .people
+                        .find(person => person.id.toString() === props.match.params.memberId)
+            props = {...props, ...member}
+            return <Member {...props} />
+          }}
+        />
+  ```
+
+  </p>
+</details>
 
 ## Bonuses
 
