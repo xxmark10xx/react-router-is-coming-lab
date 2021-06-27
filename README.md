@@ -1,4 +1,4 @@
-# Router is coming
+# ![GA Logo](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Router is coming
 ## Getting started
 -    Fork and clone this repository
 -    Install dependencies with `npm i`
@@ -27,8 +27,8 @@ We don't have the data flowing yet, so include a temporary tag indicating what d
 
 We'll come back to these shortly.
 
-Houses.js
-```
+```jsx
+// in Houses.js
 return (
     <div className="page">
         <div className="header">
@@ -40,8 +40,9 @@ return (
     </div>
 )
 ```
-House.js
-```
+
+```jsx 
+// in House.js
 return (
     <div className='page'>
         <div className='header'>
@@ -53,8 +54,9 @@ return (
     </div>
 )
 ```
-Member.js
-```
+
+```jsx
+// in Member.js
 return (
     <div className="page">
         <div className="header">
@@ -66,7 +68,6 @@ return (
     </div>
 )
 ```
-
 
 ## Step Two: Implement Router
 At the top of your `App.js`, be sure to import `BrowserRouter` and `Route` from `react-router-dom`.
@@ -92,3 +93,7 @@ Once you have completed this, move onto `Family.js` and `Member.js`. Each of the
 - Using the `wikiSuffix` value of the data object, create a link using `https://awoiaf.westeros.org/index.php/:suffix`.
 -  Style it out! Some basic styling has been included, but you can definitely add a bit of your own flair
 - Add the ability for users to favorite characters and houses and render these favorites alongisde the primary list
+
+## Licensing
+1. All content is licensed under a CC-BY-NC-SA 4.0 license.
+2. All software code is licensed under GNU GPLv3. For commercial use or alternative licensing, please contact legal@ga.co.
