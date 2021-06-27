@@ -12,16 +12,15 @@ import Member from './components/Member'
 import gameOfThrones from './gameOfThrones'
 
 export default function App() {
-  const data = gameOfThrones
-  console.log(data)
+  const houseData = gameOfThrones
+  console.log(houseData)
 
   return (
     <div>
       <Router>
         <Route 
           exact path="/"
-          component={Houses} 
-          data={data}
+          render={() => <Houses houseData={houseData} />}
         />
 
         <Route 
