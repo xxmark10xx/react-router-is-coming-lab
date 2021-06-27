@@ -7,9 +7,6 @@ export default function House(props) {
       <li key={`${person.name}-${person.id}`}>
         <Link 
           to={`${props.match.url}/member/${person.id}`}
-          state={{
-            
-          }}
         >
           {person.name}
         </Link>
