@@ -37,11 +37,11 @@ We'll come back to these shortly.
 ```jsx
 // in Houses.js
 return (
-    <div className="page">
+    <div>
         <div className="header">
             <h2>Game of Thrones Houses</h2>
         </div>
-        <div className="house-list">
+        <div className="list">
             A list of houses
         </div>
     </div>
@@ -51,11 +51,11 @@ return (
 ```jsx 
 // in House.js
 return (
-    <div className='page'>
-        <div className='header'>
+    <div className="page">
+        <div className="header">
             <h2>Members of a GoT House</h2>
         </div>
-        <ul className='list'>
+        <ul className="list">
             A list of members
         </ul>
     </div>
@@ -101,7 +101,7 @@ Once you have completed this, move onto `Family.js` and `Member.js`. Each of the
 ## Bonuses
 
 - Using the `wikiSuffix` value of the data object, create a link using `https://awoiaf.westeros.org/index.php/:suffix`.
--  Style it out! Some basic styling has been included, but you can definitely add a bit of your own flair
+-  Style it out, have some fun and add a bit of your own flair.
 - Add the ability for users to favorite characters and houses and render these favorites alongisde the primary list
 
 ## Licensing
