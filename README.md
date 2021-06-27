@@ -104,7 +104,7 @@ Once you have completed this, move onto `House.js` and `Member.js`. Each of thes
 
 <details>
 
-  <summary> Stuck on how to render your `/houses/:id`?</summary>
+  <summary> Stuck on how to render your /houses/:id route in App.js?</summary>
 
   <p>
 
@@ -125,11 +125,11 @@ Once you have completed this, move onto `House.js` and `Member.js`. Each of thes
   </p>
 </details>
 
-* Since `/houses/:houseId/members/:memberId` has two route parameters, you will have access to them as `rops.match.params.houseId` and `props.match.params.memberId`
+* Since `/houses/:houseId/members/:memberId` has two route parameters, you will have access to them as `props.match.params.houseId` and `props.match.params.memberId`
 
 <details>
 
-  <summary> Stuck on how to render your `/houses/:houseId/members/:memberId`?</summary>
+  <summary> Stuck on how to render your `/houses/:houseId/members/:memberId` route in App.js?</summary>
 
   <p>
 
