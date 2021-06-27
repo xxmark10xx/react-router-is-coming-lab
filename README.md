@@ -139,7 +139,7 @@ Once you have completed this, move onto `House.js` and `Member.js`. Each of thes
           render={(props) => {
             
             // first find the right house from the url params
-            const member = houseData
+            const member = gameOfThrones
                 .find(house => house.id.toString() === props.match.params.houseId)
                     // then find the right person in that house
                     .people
