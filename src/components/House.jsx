@@ -5,7 +5,14 @@ export default function House(props) {
   const members = props.people.map(person => {
     return (
       <li key={`${person.name}-${person.id}`}>
-        <Link to={`${props.match.url}/member/${person.id}`}>{person.name}</Link>
+        <Link 
+          to={`${props.match.url}/member/${person.id}`}
+          state={{
+            
+          }}
+        >
+          {person.name}
+        </Link>
       </li>
     )
   })
