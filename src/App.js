@@ -27,16 +27,23 @@ export default function App() {
           exact path="/houses/:id" 
           render={(props) => {
             const house = houseData.find(house => house.id.toString() === props.match.params.id)
-            console.log(house)
+            // console.log(house)
             props = {...props, ...house}
             return <House {...props}/>
           }} 
         />
 
         <Route 
-          path="/houses/:id/member/:id" 
-          render={() => {
-            return <Member />
+          path="/houses/:houseId/member/:memberId" 
+          render={(props) => {
+            // console.log(props)
+            const member = houseData
+              .find(house => house.id.toString() === props.match.params.houseId)
+                .people
+                  .find(person => person.id.toString() === props.match.params.memberId)
+
+            props = {...props, ...member}
+            return <Member {...props} />
           }}
         />
       </Router>

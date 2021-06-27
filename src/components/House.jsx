@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 
 export default function House(props) {
-  console.log(props)
+  // console.log(props)
   const members = props.people.map(person => {
     return (
       <li key={`${person.name}-${person.id}`}>
@@ -24,6 +24,7 @@ export default function House(props) {
             </a>
 
         </div>
+        
         <ul className="list">
             {members}
         </ul>
