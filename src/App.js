@@ -25,8 +25,11 @@ export default function App() {
 
         <Route 
           exact path="/houses/:id" 
-          render={() => {
-            return <House />
+          render={(props) => {
+            const house = houseData.find(house => house.id.toString() === props.match.params.id)
+            console.log(house)
+            props = {...props, ...house}
+            return <House {...props}/>
           }} 
         />
 

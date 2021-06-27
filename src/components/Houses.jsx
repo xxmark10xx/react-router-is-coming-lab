@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 
 export default function Houses(props) {
+  
   const houseLinks = props.houseData.map((house) => {
     return(
       <li key={`${house.name}-${house.id}`}>
@@ -8,6 +9,7 @@ export default function Houses(props) {
       </li>
     ) 
   })
+
   return (
     <div>
         <div className="header">
