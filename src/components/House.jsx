@@ -1,12 +1,15 @@
-import { Link } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 
-export default function House(props) {
-  // console.log(props)
-  const members = props.people.map(person => {
+export default function House({ houses }) {
+  const { id } = useParams()
+  const house = houses.find(house => house.id.toString() === id)
+  if (!house) return <h1> house {id} Not Found</h1>
+
+  const members = house.people.map(person => {
     return (
       <li key={`${person.name}-${person.id}`}>
         <Link 
-          to={`${props.match.url}/member/${person.id}`}
+          to={`/houses/${id}/member/${person.id}`}
         >
           {person.name}
         </Link>
@@ -17,11 +20,11 @@ export default function House(props) {
   return (
     <div className="page">
         <div className="header">
-            <h2>House of {props.name}</h2>
+            <h2>House of {house.name}</h2>
 
             {/* bonus: */}
             <a
-              href={`https://awoiaf.westeros.org/index.php/${props.wikiSuffix}`}
+              href={`https://awoiaf.westeros.org/index.php/${house.wikiSuffix}`}
               target="_blank"
             >
               more info

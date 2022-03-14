@@ -2,6 +2,7 @@ import React from 'react'
 
 import {
   BrowserRouter as Router,
+  Routes,
   Route,
 } from 'react-router-dom';
 
@@ -18,34 +19,32 @@ export default function App() {
   return (
     <div>
       <Router>
-        <Route 
-          exact path="/"
-          render={() => <Houses houseData={houseData} />}
-        />
+        <Routes>
+          <Route
+            exact path="/"
+            element={<Houses houseData={houseData} />}
+          />
 
-        <Route 
-          exact path="/houses/:id" 
-          render={(props) => {
-            const house = houseData.find(house => house.id.toString() === props.match.params.id)
-            // console.log(house)
-            props = {...props, ...house}
-            return <House {...props}/>
-          }} 
-        />
+          <Route
+            exact path="/houses/:id"
+            element={<House houses={houseData} />}
+          />
 
-        <Route 
-          path="/houses/:houseId/member/:memberId" 
-          render={(props) => {
-            // console.log(props)
-            const member = houseData
-              .find(house => house.id.toString() === props.match.params.houseId)
+          <Route
+            path="/houses/:houseId/member/:memberId"
+            element={<Member houses={houseData} />}
+            render={(props) => {
+              // console.log(props)
+              const member = houseData
+                .find(house => house.id.toString() === props.match.params.houseId)
                 .people
-                  .find(person => person.id.toString() === props.match.params.memberId)
+                .find(person => person.id.toString() === props.match.params.memberId)
 
-            props = {...props, ...member}
-            return <Member {...props} />
-          }}
-        />
+              props = { ...props, ...member }
+              return <Member {...props} />
+            }}
+          />
+        </Routes>
       </Router>
     </div>
   )
